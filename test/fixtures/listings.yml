@@ -1,19 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: 
-  description: MyString
-  category: MyString
-  features: MyString
-  price: 1.5
-  city_id: 
-  country_id: 
+  title: MyString
+  condition: 1
+  price: 1
+  sold: false
+  description: MyText
+  user: one
+  category: one
 
 two:
-  name: 
-  description: MyString
-  category: MyString
-  features: MyString
-  price: 1.5
-  city_id: 
-  country_id: 
+  title: MyString
+  condition: 1
+  price: 1
+  sold: false
+  description: MyText
+  user: two
+  category: two

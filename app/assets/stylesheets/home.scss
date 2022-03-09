@@ -2,3 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.hero-image{
+    display: flex;
+    background-image: url("background.jpg");
+    background-size: 100%;
+    min-width: 10vw;
+    height: 120vh;
+    opacity: 0.65;
+
+ }
+
