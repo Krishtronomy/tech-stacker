@@ -32,6 +32,9 @@ gem 'bootstrap', '~> 4.5.2'
 gem 'devise'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
