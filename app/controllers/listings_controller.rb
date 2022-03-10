@@ -8,6 +8,7 @@ class ListingsController < ApplicationController
   end
 
   def show
+   
     
   end
 
@@ -41,6 +42,11 @@ class ListingsController < ApplicationController
   end
 
   private
+
+  def authorize_user
+
+  end
+
 
 def listing_params
   params.require(:listing).permit(:title, :price, :category_id, :condition, :description, :picture)
