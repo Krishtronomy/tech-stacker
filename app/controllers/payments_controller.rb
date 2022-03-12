@@ -56,7 +56,7 @@ class PaymentsController < ApplicationController
      pp payment.charges.data[0].receipt_url
      @listing = Listing.find(listing_id)
      @listing.update(sold: true)
-     #CREATE ORDER/PURCHASE AND TRACK EXTRA INFO 
+     #CREATE ORDER AND TRACK EXTRA INFO 
      Order.create(listing_id: listing_id, seller_id: @listing.user_id, buyer_id: buyer_id, payment_id: payment_intent_id, receipt_url: payment.charges.data[0].receipt_url  )
     end 
   end
