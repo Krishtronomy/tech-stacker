@@ -3,7 +3,6 @@ class PaymentsController < ApplicationController
     
     def success
       @order = Order.find_by(listing_id: params[:id])
-    # @order = Order.all
     end
   
     def create_checkout_session
