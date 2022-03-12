@@ -1,1 +1,2 @@
-<h1>Congratulations you bought: <h2><%=@listing.title%><h2></h1>
+<p>Thanks for buying <%=@order.listing.title%></p>
+<%=link_to "View Receipt", @order.receipt_url %>
