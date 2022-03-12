@@ -23,6 +23,6 @@ module TechStacker
     if ENV["PIPE_ENV"].present?
       Rails.application.config.credentials.content_path = Rails.root.join("config/credentials/#{ENV["PIPE_ENV"]}.yml.enc")
     end
-  end
+
   end
 end
