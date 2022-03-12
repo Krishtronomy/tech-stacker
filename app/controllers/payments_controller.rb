@@ -2,8 +2,8 @@ class PaymentsController < ApplicationController
     skip_before_action :verify_authenticity_token, only: [:webhook]
     
     def success
-    #   @order = Order.find_by(listing_id: params[:id])
-    @order = Order.all
+      @order = Order.find_by(listing_id: params[:id])
+    # @order = Order.all
     end
   
     def create_checkout_session
