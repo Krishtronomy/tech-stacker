@@ -1,4 +1,4 @@
-<h1> Listings SHOW </h1>
+<h1> Listings</h1>
 
 <section class='container d-flex flex-column flex-md-row px-2 my-2 my-md-5'>
     <div class='content col-12 col-md-7 col-lg-8 p-0 pr-md-3'>
@@ -17,7 +17,7 @@
         <p><%=@listing.description%></p>
 
 <%if current_user && @listing.sold == false %>
-  
+     
     <%=button_to "Buy: #{format_price(@listing.price)}",
     create_checkout_session_path,
     remote: true,

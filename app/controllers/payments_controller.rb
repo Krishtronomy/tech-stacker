@@ -33,6 +33,7 @@ class PaymentsController < ApplicationController
       @session_id = session.id
     end 
   
+    #Checks and validates stripe signature with webhoook signing secret and generate stripe event
     def webhook
      begin 
       payload = request.raw_post
@@ -47,7 +48,7 @@ class PaymentsController < ApplicationController
       return
      end
      
-     
+     # Tracks information about the listing that was purchased and update listing to sold and create order in orders table
      payment_intent_id = event.data.object.payment_intent
      payment = Stripe::PaymentIntent.retrieve(payment_intent_id)
      listing_id = payment.metadata.listing_id 
@@ -55,7 +56,7 @@ class PaymentsController < ApplicationController
      pp payment.charges.data[0].receipt_url
      @listing = Listing.find(listing_id)
      @listing.update(sold: true)
-     #CREATE ORDER/PURCHASE AND TRACK EXTRA INFO 
+     #CREATE ORDER AND TRACK EXTRA INFO 
      Order.create(listing_id: listing_id, seller_id: @listing.user_id, buyer_id: buyer_id, payment_id: payment_intent_id, receipt_url: payment.charges.data[0].receipt_url  )
     end 
   end
