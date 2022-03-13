@@ -44,7 +44,7 @@ class ListingsController < ApplicationController
 
 
 def listing_params
-  params.require(:listing).permit(:title, :price, :category_id, :condition, :description, :picture)
+  params.require(:listing).permit(:title, :price, :category_id, :condition, :description, :picture, feature_ids: [])
 end
 
   def authorize_user
@@ -61,6 +61,7 @@ end
   def set_form_vars
     @categories = Category.all
     @conditions = Listing.conditions.keys
+    @features = Feature.all
   end
 
 
