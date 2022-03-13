@@ -26,7 +26,7 @@ class ListingsController < ApplicationController
   end
 
   def update
-    @listing.update (listing_params)
+    @listing.update(listing_params)
     if @listing.save
       redirect_to @listing, notice: "Listing successfully updated"
     else
