@@ -34,7 +34,7 @@
     data: {disable_with: "Loading..."}%>
 
      <%elsif @listing.sold%>
-     <button class='btn btn-secondary' disabled>SOLD</button>
+     <button class='btn btn-secondary mb-3 ml-3' disabled>SOLD</button>
      <%else%>
      <%=button_to "Login to buy", new_user_session_path, class: "btn btn-info"%>
      <%end%>
