@@ -12,4 +12,14 @@ module ListingsHelper
   def format_price(price)
     "$#{price/ 100.0}"
   end
+
+  #formats date and converts from UTC to melbourne time
+def format_date(date)
+  format = date.in_time_zone('Australia/Melbourne')
+  format.strftime("%d %b, %Y")
 end
+
+end
+
+
+
