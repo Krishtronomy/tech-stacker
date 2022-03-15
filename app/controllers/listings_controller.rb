@@ -40,6 +40,7 @@ class ListingsController < ApplicationController
     redirect_to listings_path, notice: "Succesfully deleted"
   end
 
+  # sets variable to access orders for current user id
   def purchases
       @list_purchases = Order.where(buyer_id: current_user.id)
   end
@@ -67,10 +68,5 @@ end
     @conditions = Listing.conditions.keys
     @features = Feature.all
   end
-
-  def set_purchase
-    @purchase = Order.find_by(params[:buyer_id])
-  end
-
 
 end
