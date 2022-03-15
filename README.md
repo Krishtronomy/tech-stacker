@@ -57,3 +57,6 @@ The Target audience for the Martetplace application is for users who like tech p
 - Stripe (payments)
 - AWS S3 Storage (Image upload)
 - Heroku (deployment)
+
+### Third Party Services
+The app will use Stripe for payments processing and for issuing receipts, this will be implemented through the Stripe API and webhooks. AWS S3 Storage will be used for image storage for when users upload images to the website. Github is being used for version control. Heroku is being used for deployment of the website, with staging and production pipelines to allow for efficiency of deployment.

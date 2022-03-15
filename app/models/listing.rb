@@ -1,6 +1,7 @@
 class Listing < ApplicationRecord
   belongs_to :user
   belongs_to :category
+  has_one :order, dependent: :destroy 
   has_one_attached :picture
   has_many :listings_features, dependent: :destroy
   has_many :features, through: :listings_features
@@ -18,16 +19,19 @@ class Listing < ApplicationRecord
   # before_validation :convert_price_to_cents, if: :price_changed?
 
   private
+  #Removes whitespace from data input
   def remove_whitespace
     self.title = self.title.strip
     self.description = self.description.strip
   end
 
+  # sanitises input and replaces word weapon with toy
   def remove_weapon
     self.title = self.title.gsub(/weapon/i, 'toy')
     self.description = self.description.gsub(/weapon/i, 'toy')
   end
 
+  #Converts price to cents for better user experience
   def convert_price_to_cents
     self.price = (self.attributes_before_type_cast["price"].to_f * 100)
   end
