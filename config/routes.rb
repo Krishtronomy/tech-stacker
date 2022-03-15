@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get "restricted", to: "pages#restricted"
   get "listings", to: "listings#index", as: "listings"
+  get "purchases", to: "listings#purchases", as: "purchases"
   post "listings", to: "listings#create"
   get "listings/new", to: "listings#new", as: "new_listing"
   get "listings/:id", to: "listings#show", as: "listing"

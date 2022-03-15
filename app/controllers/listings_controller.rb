@@ -40,6 +40,10 @@ class ListingsController < ApplicationController
     redirect_to listings_path, notice: "Succesfully deleted"
   end
 
+  def purchases
+      @list_purchases = Order.where(buyer_id: current_user.id)
+  end
+
   private
 
 
@@ -62,6 +66,10 @@ end
     @categories = Category.all
     @conditions = Listing.conditions.keys
     @features = Feature.all
+  end
+
+  def set_purchase
+    @purchase = Order.find_by(params[:buyer_id])
   end
 
 

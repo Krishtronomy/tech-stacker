@@ -17,6 +17,10 @@
 
       <%=link_to "Listings", listings_path, class:"nav-link"%>
 
+      <%if user_signed_in?%>
+       <%=link_to "Purchases", purchases_path, class:"nav-link"%>
+       <%end%>
+
       <%# render login or log out button depending whether user signed in or not %>
      <%if user_signed_in?%>
         <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-item nav-link"%>
