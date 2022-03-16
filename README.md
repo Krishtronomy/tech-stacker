@@ -84,3 +84,6 @@ Login, Listings and Purchase History Page:
 
 Create Listing and Show Listing Page:
 ![wireframe](app/assets/images/wireframe2.png "wireframe 2")
+
+# ERD
+![diagram](app/assets/images/ERD.png "ERD")
