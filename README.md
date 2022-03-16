@@ -4,7 +4,7 @@
 There are many Market place Applications out there, however at techStacker our focus is the ability to be able to buy and sell Tech gear whether it be new, used, good condition etc, in an easy to use manner with no fee's to use the Web Application, to help more buyers and sellers to connect, while putting their old tech to use without it going to waste.
 
 # Why is it a problem that needs solving?
-Our focus is to allow Tech gear to be accessible to everyone. In todays day and age, tech is always involving and it can be difficult to keep up with all the latest releases of products. New tech products are constantly being purchased by consumers while the old versions of it are collecting dust inside drawers; techStacker will solve this problem of old tech going to waste, by opening up a marketplace for sellers to list their no longer required products for any interested buyers. Because it will have a pure focus of tech gear, it will have the attraction of users to the techStacker application, rather than being overwhelmed by the choice of other martketplace applications that focus on other categories.
+Our focus is to allow Tech gear to be accessible to everyone. In todays day and age, tech is always evolving and it can be difficult to keep up with all the latest releases of products. New tech products are constantly being purchased by consumers while the old versions of it are collecting dust inside drawers; techStacker will solve this problem of old tech going to waste, by opening up a marketplace for sellers to list their no longer required products for any interested buyers. Because it will have a pure focus of tech gear, it will have the attraction of users to the techStacker application, rather than being overwhelmed by the choice of other martketplace applications that focus on other categories.
 
 # Link to Website:
 https://techstacker.herokuapp.com/
@@ -60,3 +60,27 @@ The Target audience for the Martetplace application is for users who like tech p
 
 ### Third Party Services
 The app will use Stripe for payments processing and for issuing receipts, this will be implemented through the Stripe API and webhooks. AWS S3 Storage will be used for image storage for when users upload images to the website. Github is being used for version control. Heroku is being used for deployment of the website, with staging and production pipelines to allow for efficiency of deployment.
+
+# User Stories
+- "As a consumer of tech products, I want an easy to use platform where I can search for tech gear, without being overwhelmed with options on other types of products, so that I can quickly find what I am looking for."
+- "As a user, I want to sign up easily without spending too much time, so I can get to listing or buying products."
+- "As a user, I want to be able to Login/Logout whenever I want"
+- "As a user, I want one single account to be able to buy or sell, so that I dont have to create multiple accounts or use multiple email addresses."
+- "As a user, I want to list items for sale easily, so that I can spend less time on admin, and more time listing more items."
+- "As a user, I want to attach pictures to my listing, so I can attract buyers."
+- "As a user, I want to add a title, price, category, condition, features and a description about my product, so that I can be as informative about my listing as possible."
+- "As a user, I want to be able to edit or delete my listing, so that I can adjust prices or listing details whenever required."
+- "As a user, I want to view multiple listings easily with a card-like view to give me enough detail about the listing, so that I can easily identify which listings interest me."
+- "As a user, I want to be able to click on a listing to view more details and proceed to buy the listing straight away, so that I can easily checkout if I have decided on my purchase."
+- "As a user, I want to use a secure payment gateway and have multiple payment options, so that my details remain secure and have multiple options for paying."
+- "As a user, I want to be able to view my previous purchases and receipts, so that I can keep a track of my orders."
+- "As a user, I want to be able to view my sold items, so that I can keep a track of my sold items."
+- "As a user, I want to add items to a wishlist/favourites, so that I can keep track of listings I am interested in."
+- "As a user, I want to be able to communicate with users, so that I can ask questions about a listing or a order."
+
+# Wireframes
+Login, Listings and Purchase History Page:
+![wireframe](app/assets/images/wireframe1.png "wireframe 1")
+
+Create Listing and Show Listing Page:
+![wireframe](app/assets/images/wireframe2.png "wireframe 2")

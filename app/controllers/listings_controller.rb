@@ -5,6 +5,7 @@ class ListingsController < ApplicationController
   before_action :set_form_vars, only: [:new, :edit]
 
   def index
+    #Gets all listings
     @listings = Listing.all
   end
 
@@ -12,10 +13,12 @@ class ListingsController < ApplicationController
   end
 
   def new
+    #Creates a new listing
     @listing = Listing.new
   end
 
   def create
+    #Saves listing to database or returns error if not all required fields are met
     @listing = current_user.listings.new(listing_params)
     if @listing.save
       redirect_to @listing, notice: "Listing successfully created"
@@ -26,6 +29,7 @@ class ListingsController < ApplicationController
   end
 
   def update
+    # Updates and saves listing to database or returns error if not all requirements are met
     @listing.update(listing_params)
     if @listing.save
       redirect_to @listing, notice: "Listing successfully updated"
@@ -36,11 +40,13 @@ class ListingsController < ApplicationController
   end
 
   def destroy
+    # Deletes listing from database and pops up a successful notice message
     @listing.destroy
     redirect_to listings_path, notice: "Succesfully deleted"
   end
 
   def purchases
+    # Gets orders where the buyer id is equal to current user logged in
       @list_purchases = Order.where(buyer_id: current_user.id)
   end
 
