@@ -109,10 +109,39 @@ The `listing` model shares many associations with other entities. It has a `belo
 The `order` model `belongs_to` the `user` model, while `user` shares a `has_many` association with `order`, creating a one-to-many relationship. This means an order can only have one user, while a user can have many orders.
 
 # Database Relations
-The database relations within the application will have appropiate database models or tables which will associate with other tables using Primary Keys and Foreign Keys. We will want to have Normalisation in our database to minimise data duplication and maintain data integrity. To achieve this, we can follow the 'Normal Forms' by ensuring our database tables only hold single attributes, ensuring our tables serve a single purpose and having a database schema with normalising principles to reduce data duplication.
+The database relations within the application will have appropiate database models or tables which will associate with other tables using Primary Keys and Foreign Keys. We will want to have Normalisation in our database to minimise data duplication and maintain data integrity. To achieve this, we can follow the 'Normal Forms' by ensuring our database tables only hold single attributes as seen on the ERD, ensuring our tables serve a single purpose and having a database schema with normalising principles to reduce data duplication. The ERD also provides the columns and data types these tables or models will have, each serving its own purpose.
 
 `user` model that will hold user information for both buyers and sellers. `id` will be the Primary Key and will map to the `order` model and `user_id` column which act as a Foreign key. The `order` model with `id` as the Primary Key, will hold information about the buyer and listing relating to the purchase. These will be mapped back to `listing` using `listing_id` as the Foreign Key. `categories` will store different category names for our listings and have `id` as the Primary Key which will map to `listings` through the Foreign key `category_id`. `features` will hold information about the different features that a listing could have, and will map to `listing_features` through the Primary Key`features.id` and Foreign Key `listing_features.feature_id`, `listing.id` will map to `listing_features.listing_id`.
-These are the models that will form the main mvp of the application. Additional tables and models along with the ones discusessed, can be seen represented with Primary Keys(PK) and Foreign Keys(FK) on the diagram below:
+These are the models that will form the main mvp of the application. Additional tables and models along with the ones discussed, can be seen represented with Primary Keys(PK) and Foreign Keys(FK) on the diagram below:
 
 
 ![relation diagram](app/assets/images/relations.png "relation diagram")
+
+
+# Database Schema Design
+
+A snippet of the Database schema.rb can be seen below. Through the schema.rb we can see how it compares to the ERD provided above. Through the code we can see that some of the fields or columns within the database can be null or not required. In the schema.rb we can see the Primary keys are indicated as 'index' datatypes on each table, with the Foreign Keys ordered below, referencing each table and/or column it maps to. The other datatypes such as 'string' and 'integer' are reflected the same with both the ERD and schema.rb file. Differences can be seen in some of the extra tables that are in the ERD but not in the schema.rb, which were not implemented as part of this cycle, some of which are the 'transactions', 'country and city', user_review' and 'wishlist' tables.
+
+![schema design](app/assets/images/schema1.png "schema design")
+![schema design](app/assets/images/schema2.png "schema design")
+
+
+# Allocation of Tasks
+
+Tasks for this project were managed using Trello. Four sections were added for efficient planning and visibility of tasks: 
+
+Brainstorm: For throwing out ideas and keeping stuff visible of what I wanted to achieve.
+To-Do: For listing actual things, requirements and items/task I need to work on.
+Doing: For items/tasks currently being worked on.
+Done: For items/tasks that have been completed.
+
+I also used date reminders and priority badges to indicate priority level so I can priotise which tasks needed to be completed first and which were overdue or closing in on the due date. Effective planning was achieved by creating cards whenever a new task needed to be done, and also moving cards around to the appropiate sections.
+
+Link to Trello Board: https://trello.com/b/IuzpoNBy/techstacker-marketplace
+
+Screenshots of Trello:
+
+
+![trello board](app/assets/images/trello.png "trello board")
+![trello board](app/assets/images/trello2.png "trello board")
+
