@@ -92,12 +92,13 @@ The Models are inherited from Active Record (which is inherited from Application
 The Controllers are inherited from Application Controller (which is inherited from Active Controller) which allows us to define methods and set instance variables to query data from our Models, making the ability to implement CRUD actions seamless and to also set before actions.
 The Views are inherited from Action View and allows the application to have more dynamic front end web-pages. Partials are used to create shared navbars, templates and layouts easily using embedded html ruby files (ERB).
 
-### Third Party Services
+# Third Party Services
 The app will use Stripe. Stripe is a payments infastructure company allowing for secure and easy integrations. Stripe will be used for payments processing and for issuing receipts, this will be implemented through the Stripe API and webhooks. AWS S3 Storage will be used for image storage for when users upload images to the website. AWS S3 is part of Amazons vareity of web service offerings, allowing for easy integration. Github is being used for version control. Heroku is being used for deployment of the website, with staging and production pipelines to allow for efficiency of deployment.
 
 # Models/Active Record associations
 The `listing` model shares many associations with other entities. It has a `belongs_to` association with the models `user` and `category`, while both these models share a `has_many` association with `listing`, creating a one-to-many relationship. This means a listing must only have one user and category, while user and category can be apart of many listings.
 
+`listing` shares a `has_one_attached` association with Active Storage `picture`, creating one-to-one mapping. This means each listing can have one picture attached.
 
 `listing` also has a `has_one` association with the `order` model, while `order` `belongs_to` to `listing`, creating a one-to-one relationship. This means that a listing can only have one order, while any one order must have one listing.
 
@@ -106,3 +107,12 @@ The `listing` model shares many associations with other entities. It has a `belo
 
 
 The `order` model `belongs_to` the `user` model, while `user` shares a `has_many` association with `order`, creating a one-to-many relationship. This means an order can only have one user, while a user can have many orders.
+
+# Database Relations
+The database relations within the application will have appropiate database models or tables which will associate with other tables using Primary Keys and Foreign Keys. We will want to have Normalisation in our database to minimise data duplication and maintain data integrity. To achieve this, we can follow the 'Normal Forms' by ensuring our database tables only hold single attributes, ensuring our tables serve a single purpose and having a database schema with normalising principles to reduce data duplication.
+
+`user` model that will hold user information for both buyers and sellers. `id` will be the Primary Key and will map to the `order` model and `user_id` column which act as a Foreign key. The `order` model with `id` as the Primary Key, will hold information about the buyer and listing relating to the purchase. These will be mapped back to `listing` using `listing_id` as the Foreign Key. `categories` will store different category names for our listings and have `id` as the Primary Key which will map to `listings` through the Foreign key `category_id`. `features` will hold information about the different features that a listing could have, and will map to `listing_features` through the Primary Key`features.id` and Foreign Key `listing_features.feature_id`, `listing.id` will map to `listing_features.listing_id`.
+These are the models that will form the main mvp of the application. Additional tables and models along with the ones discusessed, can be seen represented with Primary Keys(PK) and Foreign Keys(FK) on the diagram below:
+
+
+![relation diagram](app/assets/images/relations.png "relation diagram")
