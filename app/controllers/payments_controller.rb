@@ -2,10 +2,12 @@ class PaymentsController < ApplicationController
     skip_before_action :verify_authenticity_token, only: [:webhook]
     
     def success
+      #returns listing for purchased order
       @order = Order.find_by(listing_id: params[:id])
     end
   
     def create_checkout_session
+      #Creates stripe checkout session
       @listing = Listing.find(params[:id]) 
   
       session = Stripe::Checkout::Session.create(
@@ -29,7 +31,7 @@ class PaymentsController < ApplicationController
         success_url: "#{root_url}payments/success/#{@listing.id}",
         cancel_url: root_url
       )
-  
+      #Sets session id into a instance variable
       @session_id = session.id
     end 
   
@@ -56,7 +58,7 @@ class PaymentsController < ApplicationController
      pp payment.charges.data[0].receipt_url
      @listing = Listing.find(listing_id)
      @listing.update(sold: true)
-     #CREATE ORDER AND TRACK EXTRA INFO 
+     #Creates orders and tracks extra info
      Order.create(listing_id: listing_id, seller_id: @listing.user_id, buyer_id: buyer_id, payment_id: payment_intent_id, receipt_url: payment.charges.data[0].receipt_url  )
     end 
   end
