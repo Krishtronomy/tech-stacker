@@ -58,9 +58,6 @@ The Target audience for the Martetplace application is for users who like tech p
 - AWS S3 Storage (Image upload)
 - Heroku (deployment)
 
-### Third Party Services
-The app will use Stripe for payments processing and for issuing receipts, this will be implemented through the Stripe API and webhooks. AWS S3 Storage will be used for image storage for when users upload images to the website. Github is being used for version control. Heroku is being used for deployment of the website, with staging and production pipelines to allow for efficiency of deployment.
-
 # User Stories
 - "As a consumer of tech products, I want an easy to use platform where I can search for tech gear, without being overwhelmed with options on other types of products, so that I can quickly find what I am looking for."
 - "As a user, I want to sign up easily without spending too much time, so I can get to listing or buying products."
@@ -87,3 +84,25 @@ Create Listing and Show Listing Page:
 
 # ERD
 ![diagram](app/assets/images/ERD.png "ERD")
+
+
+# High-level components (abstractions)
+The app is built using the rails MVC framework pattern, consisting of Models, Views and Controllers.
+The Models are inherited from Active Record (which is inherited from Application Record) which makes querying and manipulating our Postgres relational database easier, without having to write any complicated SQL queries. Database calls are also minimised with eager-loading and preloading, allowing for efficiency and less queries to be run.
+The Controllers are inherited from Application Controller (which is inherited from Active Controller) which allows us to define methods and set instance variables to query data from our Models, making the ability to implement CRUD actions seamless and to also set before actions.
+The Views are inherited from Action View and allows the application to have more dynamic front end web-pages. Partials are used to create shared navbars, templates and layouts easily using embedded html ruby files (ERB).
+
+### Third Party Services
+The app will use Stripe. Stripe is a payments infastructure company allowing for secure and easy integrations. Stripe will be used for payments processing and for issuing receipts, this will be implemented through the Stripe API and webhooks. AWS S3 Storage will be used for image storage for when users upload images to the website. AWS S3 is part of Amazons vareity of web service offerings, allowing for easy integration. Github is being used for version control. Heroku is being used for deployment of the website, with staging and production pipelines to allow for efficiency of deployment.
+
+# Models/Active Record associations
+The `listing` model shares many associations with other entities. It has a `belongs_to` association with the models `user` and `category`, while both these models share a `has_many` association with `listing`, creating a one-to-many relationship. This means a listing must only have one user and category, while user and category can be apart of many listings.
+
+
+`listing` also has a `has_one` association with the `order` model, while `order` `belongs_to` to `listing`, creating a one-to-one relationship. This means that a listing can only have one order, while any one order must have one listing.
+
+
+`listing` shares a `has_many` association with `listing_features`, while having a `has_many_through` association with `features` making `listing_features` the join table between `listing` and `features`, creating a many-to-many relationship. This means many listings can have many features, through the listing_features model.
+
+
+The `order` model `belongs_to` the `user` model, while `user` shares a `has_many` association with `order`, creating a one-to-many relationship. This means an order can only have one user, while a user can have many orders.
