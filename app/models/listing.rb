@@ -16,7 +16,7 @@ class Listing < ApplicationRecord
   # sanitise data with lifecycle hooks
   before_save :remove_whitespace
   before_save :remove_weapon
-  # before_validation :convert_price_to_cents, if: :price_changed?
+  before_validation :convert_price_to_cents, if: :price_changed?
 
   private
   #Removes whitespace from data input
