@@ -13,9 +13,10 @@
             
             <div class="card-body">
               <h5><%=listing.title%></h5>
+              <p><small><%=format_condition(listing.category.name)%></small></p>
               <p class="card-text text-secondary"><%=listing.description%></p>
                <div class='d-flex justify-content-between'>
-                <h5><%=format_price(listing.price)%></h5>
+                <h5 class="mt-2"><%=format_price(listing.price)%></h5>
                   <%=link_to "See More", listing_path(listing.id), class: "btn btn-outline-primary"%></div>
     </div>
         </div>  
