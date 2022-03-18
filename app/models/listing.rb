@@ -11,7 +11,7 @@ class Listing < ApplicationRecord
 
   #validations
   validates :title, :description, :price, :condition, presence: true
-  validates :title, length: {minimum: 4}
+  validates :title, :description, length: {minimum: 4}
 
   # sanitise data with lifecycle hooks
   before_save :remove_whitespace
